@@ -47,4 +47,20 @@ public class Player : MonoBehaviour
     {
         rigidbody2D.MovePosition(rigidbody2D.position + move * speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D (Collider2D collision)
+    {
+        if (collision.CompareTag("Collision_Warning"))
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D (Collider2D collision)
+    {
+        if (collision.CompareTag("Collision_Warning"))
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 }
