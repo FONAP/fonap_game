@@ -8,6 +8,12 @@ public class Player : MonoBehaviour
     Rigidbody2D rigidbody2D;
     Vector2 move;
 
+    public GameObject banRobber;
+
+    public GameObject messageRobber;
+    public GameObject messageLandSlide;
+    public GameObject messageRiver;
+
     public float speed = 4f;
 
     void Start()
@@ -53,6 +59,19 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Collision_Warning"))
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            messageLandSlide.SetActive(true);
+        }
+
+        if (collision.CompareTag("Collision_Warning_River"))
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            messageRiver.SetActive(true);
+        }
+
+        if (collision.CompareTag("Robber"))
+        {
+            banRobber.SetActive(true);
+            messageRobber.SetActive(true);
         }
     }
 
@@ -61,6 +80,19 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Collision_Warning"))
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            messageLandSlide.SetActive(false);
+        }
+
+        if (collision.CompareTag("Collision_Warning_River"))
+        {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            messageRiver.SetActive(false);
+        }
+
+        if (collision.CompareTag("Robber"))
+        {
+            banRobber.SetActive(false);
+            messageRobber.SetActive(false);
         }
     }
 }

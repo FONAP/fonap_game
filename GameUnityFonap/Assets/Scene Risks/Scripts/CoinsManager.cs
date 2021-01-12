@@ -15,9 +15,20 @@ public class CoinsManager : MonoBehaviour
     public GameObject finishGameView;
     public bool finishGame = false;
 
+    public GameObject panelActivities;
+    public GameObject activity1;
+    public GameObject activity2;
+    public GameObject activity3;
+    public bool GameIsPaused = false;
+
+    bool verifyActivity1 = true;
+    bool verifyActivity2 = true;
+    bool verifyActivity3 = true;
+
     private void Start()
     {
         totalCoinsCount = transform.childCount;
+        panelActivities.SetActive(false);
         //Debug.Log(totalCoinsCount + 1); ENTERO
     }
 
@@ -30,8 +41,55 @@ public class CoinsManager : MonoBehaviour
             counter = totalCoinsCount - transform.childCount;
             coinsCollected.text = counter.ToString();
             // coinsCollected.text = transform.childCount.ToString(); CONTADOR DE MANERA INVERSA, QUITAR LA VARIABLE COUNTER
+
+            if (!GameIsPaused)
+            {
+                switch (counter)
+                {
+                    case 5:
+                        if (verifyActivity1)
+                        {
+                            panelActivities.SetActive(true);
+                            activity1.SetActive(true);
+                            GameIsPaused = true;
+                            verifyActivity1 = false;
+                        }
+                        break;
+                    case 10:
+                        if (verifyActivity2)
+                        {
+                            panelActivities.SetActive(true);
+                            activity1.SetActive(false);
+                            activity2.SetActive(true);
+                            GameIsPaused = true;
+                            verifyActivity2 = false;
+                        }
+                        break;
+                    case 15:
+                        if (verifyActivity3)
+                        {
+                            panelActivities.SetActive(true);
+                            activity2.SetActive(false);
+                            activity3.SetActive(true);
+                            GameIsPaused = true;
+                            verifyActivity3 = false;
+                        }
+                        break;
+                }
+            }
+            else if (GameIsPaused)
+            {
+                Time.timeScale = 0f;
+                if (Input.GetKeyDown("x"))
+                {
+                    panelActivities.SetActive(false);
+                    Time.timeScale = 1f;
+                    GameIsPaused = false;
+                }    
+            }
         }
 
+        /*
         if (finishGame == true)
         {
             finishGameView.SetActive(true);
@@ -41,6 +99,7 @@ public class CoinsManager : MonoBehaviour
                 finishGameView.SetActive(false);
             }
         }
+        */
     }
 
     public void AllCoinsCollected()
@@ -49,7 +108,7 @@ public class CoinsManager : MonoBehaviour
         {
             Debug.Log("Todas las monedas recogidas. VICTORIA!!");
             door.SetActive(true);
-            finishGame = true;
+            // finishGame = true;
         }
     }
 }

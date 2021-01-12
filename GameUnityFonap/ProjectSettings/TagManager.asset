@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collision_Warning
   - Door
+  - Robber
+  - Collision_Warning_River
   layers:
   - Default
   - TransparentFX
