@@ -19,7 +19,7 @@ public class CoinsManager : MonoBehaviour
     public GameObject activity1;
     public GameObject activity2;
     public GameObject activity3;
-    public bool GameIsPaused = false;
+    public bool gameIsPaused = false;
 
     bool verifyActivity1 = true;
     bool verifyActivity2 = true;
@@ -29,7 +29,6 @@ public class CoinsManager : MonoBehaviour
     {
         totalCoinsCount = transform.childCount;
         panelActivities.SetActive(false);
-        //Debug.Log(totalCoinsCount + 1); ENTERO
     }
 
     private void Update()
@@ -42,7 +41,7 @@ public class CoinsManager : MonoBehaviour
             coinsCollected.text = counter.ToString();
             // coinsCollected.text = transform.childCount.ToString(); CONTADOR DE MANERA INVERSA, QUITAR LA VARIABLE COUNTER
 
-            if (!GameIsPaused)
+            if (!gameIsPaused)
             {
                 switch (counter)
                 {
@@ -51,7 +50,7 @@ public class CoinsManager : MonoBehaviour
                         {
                             panelActivities.SetActive(true);
                             activity1.SetActive(true);
-                            GameIsPaused = true;
+                            gameIsPaused = true;
                             verifyActivity1 = false;
                         }
                         break;
@@ -61,7 +60,7 @@ public class CoinsManager : MonoBehaviour
                             panelActivities.SetActive(true);
                             activity1.SetActive(false);
                             activity2.SetActive(true);
-                            GameIsPaused = true;
+                            gameIsPaused = true;
                             verifyActivity2 = false;
                         }
                         break;
@@ -71,20 +70,20 @@ public class CoinsManager : MonoBehaviour
                             panelActivities.SetActive(true);
                             activity2.SetActive(false);
                             activity3.SetActive(true);
-                            GameIsPaused = true;
+                            gameIsPaused = true;
                             verifyActivity3 = false;
                         }
                         break;
                 }
             }
-            else if (GameIsPaused)
+            else if (gameIsPaused)
             {
                 Time.timeScale = 0f;
                 if (Input.GetKeyDown("x"))
                 {
                     panelActivities.SetActive(false);
                     Time.timeScale = 1f;
-                    GameIsPaused = false;
+                    gameIsPaused = false;
                 }    
             }
         }

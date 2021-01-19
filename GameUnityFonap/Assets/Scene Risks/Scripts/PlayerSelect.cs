@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerSelect : MonoBehaviour
 {
+    public bool enableSelectPlayer;
+
     public enum Player {Man, Girl};
     public Player playerSelected;
 
@@ -15,18 +17,41 @@ public class PlayerSelect : MonoBehaviour
 
     void Start()
     {
-        switch (playerSelected)
+        if (!enableSelectPlayer)
         {
-            case Player.Man:
-                spriteRenderer.sprite = playersRenderer[0];
-                animator.runtimeAnimatorController = playersController[0];
-                break;
-            case Player.Girl:
-                spriteRenderer.sprite = playersRenderer[1];
-                animator.runtimeAnimatorController = playersController[1];
-                break;
-            default:
-                break;
+            ChangePlayerSkin();
+        } else 
+        {
+            switch (playerSelected)
+            {
+                case Player.Man:
+                    spriteRenderer.sprite = playersRenderer[0];
+                    animator.runtimeAnimatorController = playersController[0];
+                    break;
+                case Player.Girl:
+                    spriteRenderer.sprite = playersRenderer[1];
+                    animator.runtimeAnimatorController = playersController[1];
+                    break;
+                default:
+                    break;
+            }
         }
+    }
+
+    public void ChangePlayerSkin()
+    {
+        switch (PlayerPrefs.GetString("PlayerSelected"))
+            {
+                case "Man":
+                    spriteRenderer.sprite = playersRenderer[0];
+                    animator.runtimeAnimatorController = playersController[0];
+                    break;
+                case "Girl":
+                    spriteRenderer.sprite = playersRenderer[1];
+                    animator.runtimeAnimatorController = playersController[1];
+                    break;
+                default:
+                    break;
+            }
     }
 }
