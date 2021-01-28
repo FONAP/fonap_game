@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class CoinsManager : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class CoinsManager : MonoBehaviour
     bool verifyActivity1 = true;
     bool verifyActivity2 = true;
     bool verifyActivity3 = true;
+
+    public AudioSource clipOpenActivity;
+    public AudioSource clipCloseActivity;
 
     private void Start()
     {
@@ -52,6 +56,7 @@ public class CoinsManager : MonoBehaviour
                             activity1.SetActive(true);
                             gameIsPaused = true;
                             verifyActivity1 = false;
+                            clipOpenActivity.Play();
                         }
                         break;
                     case 10:
@@ -62,6 +67,7 @@ public class CoinsManager : MonoBehaviour
                             activity2.SetActive(true);
                             gameIsPaused = true;
                             verifyActivity2 = false;
+                            clipOpenActivity.Play();
                         }
                         break;
                     case 15:
@@ -72,6 +78,7 @@ public class CoinsManager : MonoBehaviour
                             activity3.SetActive(true);
                             gameIsPaused = true;
                             verifyActivity3 = false;
+                            clipOpenActivity.Play();
                         }
                         break;
                 }
@@ -84,6 +91,7 @@ public class CoinsManager : MonoBehaviour
                     panelActivities.SetActive(false);
                     Time.timeScale = 1f;
                     gameIsPaused = false;
+                    clipCloseActivity.Play();
                 }    
             }
         }

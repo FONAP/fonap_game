@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     public GameObject messageRiver;
 
     public float speed = 4f;
+
+    public AudioSource clipFail;
 
     void Start()
     {
@@ -60,18 +63,21 @@ public class Player : MonoBehaviour
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             messageLandSlide.SetActive(true);
+            clipFail.Play();
         }
 
         if (collision.CompareTag("Collision_Warning_River"))
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             messageRiver.SetActive(true);
+            clipFail.Play();
         }
 
         if (collision.CompareTag("Robber"))
         {
             banRobber.SetActive(true);
             messageRobber.SetActive(true);
+            clipFail.Play();
         }
     }
 
