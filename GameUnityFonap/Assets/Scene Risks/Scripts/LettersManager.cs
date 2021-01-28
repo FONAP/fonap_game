@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class LettersManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class LettersManager : MonoBehaviour
     public GameObject canvasMessageSponsor;
     public bool gameIsPaused = false;
     bool verifyMessage = true;
+
+    public AudioSource clipOpenMagicBook;
+    public AudioSource clipCloseMagicBook;
 
     void Start()
     {
@@ -38,6 +42,7 @@ public class LettersManager : MonoBehaviour
                         canvasMessageSponsor.SetActive(true);
                         gameIsPaused = true;
                         verifyMessage = false;
+                        clipOpenMagicBook.Play();
                     }
                     break;
             }
@@ -50,6 +55,7 @@ public class LettersManager : MonoBehaviour
                 canvasMessageSponsor.SetActive(false);
                 Time.timeScale = 1f;
                 gameIsPaused = false;
+                clipCloseMagicBook.Play();
             }    
         }
     }
