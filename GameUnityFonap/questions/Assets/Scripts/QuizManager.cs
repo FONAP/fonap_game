@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class QuizManager : MonoBehavior
+public class QuizManager : MonoBehaviour
 {
     public List<QuestionAndAnswers> QnA;
     public GameObject[] options;
