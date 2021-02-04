@@ -12,9 +12,10 @@ public class CoinsManager : MonoBehaviour
     private int totalCoinsCount;
     private int counter;
 
+    public Text shadowTotalCoins;
+    public Text shadowCoinsCollected;
+
     public GameObject door;
-    public GameObject finishGameView;
-    public bool finishGame = false;
 
     public GameObject panelActivities;
     public GameObject activity1;
@@ -29,6 +30,13 @@ public class CoinsManager : MonoBehaviour
     public AudioSource clipOpenActivity;
     public AudioSource clipCloseActivity;
 
+    public bool coinsIsComplete = false;
+    public GameObject lettersManager;
+    public bool lettersIsComplete;
+
+    public GameObject transition;
+    public GameObject canvasGeneral;
+
     private void Start()
     {
         totalCoinsCount = transform.childCount;
@@ -36,77 +44,72 @@ public class CoinsManager : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (finishGame == false)
-        {
-            AllCoinsCollected();
-            totalCoins.text = totalCoinsCount.ToString();
-            counter = totalCoinsCount - transform.childCount;
-            coinsCollected.text = counter.ToString();
-            // coinsCollected.text = transform.childCount.ToString(); CONTADOR DE MANERA INVERSA, QUITAR LA VARIABLE COUNTER
+    {   
+        lettersIsComplete = lettersManager.GetComponent<LettersManager>().lettersIsComplete;
+        AllCoinsCollected();
+        totalCoins.text = totalCoinsCount.ToString();
+        shadowTotalCoins.text = totalCoinsCount.ToString();
+        counter = totalCoinsCount - transform.childCount;
+        coinsCollected.text = counter.ToString();
+        shadowCoinsCollected.text = counter.ToString();
 
-            if (!gameIsPaused)
+        if (!gameIsPaused)
+        {
+            switch (counter)
             {
-                switch (counter)
+                case 5:
+                    if (verifyActivity1)
+                    {
+                        panelActivities.SetActive(true);
+                        activity1.SetActive(true);
+                        gameIsPaused = true;
+                        verifyActivity1 = false;
+                        clipOpenActivity.Play();
+                    }
+                    break;
+                case 10:
+                    if (verifyActivity2)
+                    {
+                        panelActivities.SetActive(true);
+                        activity1.SetActive(false);
+                        activity2.SetActive(true);
+                        gameIsPaused = true;
+                        verifyActivity2 = false;
+                        clipOpenActivity.Play();
+                    }
+                    break;
+                case 15:
+                    if (verifyActivity3)
+                    {
+                        panelActivities.SetActive(true);
+                        activity2.SetActive(false);
+                        activity3.SetActive(true);
+                        gameIsPaused = true;
+                        verifyActivity3 = false;
+                        clipOpenActivity.Play();
+                    }
+                    break;
+            }
+        }
+        else if (gameIsPaused)
+        {
+            Time.timeScale = 0f;
+            if (Input.GetKeyDown("x"))
+            {
+                panelActivities.SetActive(false);
+                Time.timeScale = 1f;
+                gameIsPaused = false;
+                clipCloseActivity.Play();
+
+                if (coinsIsComplete && lettersIsComplete)
                 {
-                    case 5:
-                        if (verifyActivity1)
-                        {
-                            panelActivities.SetActive(true);
-                            activity1.SetActive(true);
-                            gameIsPaused = true;
-                            verifyActivity1 = false;
-                            clipOpenActivity.Play();
-                        }
-                        break;
-                    case 10:
-                        if (verifyActivity2)
-                        {
-                            panelActivities.SetActive(true);
-                            activity1.SetActive(false);
-                            activity2.SetActive(true);
-                            gameIsPaused = true;
-                            verifyActivity2 = false;
-                            clipOpenActivity.Play();
-                        }
-                        break;
-                    case 15:
-                        if (verifyActivity3)
-                        {
-                            panelActivities.SetActive(true);
-                            activity2.SetActive(false);
-                            activity3.SetActive(true);
-                            gameIsPaused = true;
-                            verifyActivity3 = false;
-                            clipOpenActivity.Play();
-                        }
-                        break;
+                    canvasGeneral.SetActive(false);
+                    transition.SetActive(true);
+                    Invoke("ChangeScene", 1.1f);
                 }
-            }
-            else if (gameIsPaused)
-            {
-                Time.timeScale = 0f;
-                if (Input.GetKeyDown("x"))
-                {
-                    panelActivities.SetActive(false);
-                    Time.timeScale = 1f;
-                    gameIsPaused = false;
-                    clipCloseActivity.Play();
-                }    
-            }
+                
+            }    
         }
-
-        /*
-        if (finishGame == true)
-        {
-            finishGameView.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                finishGameView.SetActive(false);
-            }
-        }
-        */
     }
 
     public void AllCoinsCollected()
@@ -115,7 +118,12 @@ public class CoinsManager : MonoBehaviour
         {
             Debug.Log("Todas las monedas recogidas. VICTORIA!!");
             door.SetActive(true);
-            // finishGame = true;
+            coinsIsComplete = true;
         }
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 }

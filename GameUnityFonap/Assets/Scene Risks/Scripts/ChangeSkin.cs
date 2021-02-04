@@ -6,6 +6,7 @@ public class ChangeSkin : MonoBehaviour
 {
     public GameObject skinsPanel;
     public GameObject player;
+    public GameObject initialText;
 
     public void SetSkinMan()
     {
@@ -23,5 +24,6 @@ public class ChangeSkin : MonoBehaviour
     {
         skinsPanel.SetActive(false);
         player.GetComponent<PlayerSelect>().ChangePlayerSkin();
+        initialText.SetActive(true);
     }
 }

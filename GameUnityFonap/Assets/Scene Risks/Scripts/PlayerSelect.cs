@@ -41,17 +41,17 @@ public class PlayerSelect : MonoBehaviour
     public void ChangePlayerSkin()
     {
         switch (PlayerPrefs.GetString("PlayerSelected"))
-            {
-                case "Man":
-                    spriteRenderer.sprite = playersRenderer[0];
-                    animator.runtimeAnimatorController = playersController[0];
-                    break;
-                case "Girl":
-                    spriteRenderer.sprite = playersRenderer[1];
-                    animator.runtimeAnimatorController = playersController[1];
-                    break;
-                default:
-                    break;
-            }
+        {
+            case "Man":
+                spriteRenderer.sprite = playersRenderer[0];
+                animator.runtimeAnimatorController = playersController[0];
+                break;
+            case "Girl":
+                spriteRenderer.sprite = playersRenderer[1];
+                animator.runtimeAnimatorController = playersController[1];
+                break;
+            default:
+                break;
+        }
     }
 }
