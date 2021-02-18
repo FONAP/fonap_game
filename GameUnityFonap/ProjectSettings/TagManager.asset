@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Collision_Warning
+  - Door
+  - Robber
+  - Collision_Warning_River
   layers:
   - Default
   - TransparentFX
