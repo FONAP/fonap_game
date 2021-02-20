@@ -124,7 +124,6 @@ namespace SpeedTutorMainMenuSystem
 
             if (buttonType == "NewGame")
             {
-                // SceneManager.LoadScene(_newGameButtonLevel);
                 transition.SetActive(true);
                 Invoke("ChangeScene", 1f);
                 menuNumber = 7;
@@ -224,7 +223,6 @@ namespace SpeedTutorMainMenuSystem
 
         void ChangeScene()
         {
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
             SceneManager.LoadScene(_newGameButtonLevel);
         }
     }

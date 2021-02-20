@@ -16,8 +16,12 @@ public class QuizManager : MonoBehaviour
     public Text QuestionTxt;
     public Text ScoreTxt;
 
+    public GameObject goTransition;
+
     int totalQuestions = 0;
     public int score;
+
+    public string _returnToMenu;
 
     private void Start()
     {
@@ -29,6 +33,13 @@ public class QuizManager : MonoBehaviour
     public void retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void finish()
+    {
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        goTransition.SetActive(true);
+        Invoke("ChangeScene", 0.8f);
     }
 
     void GameOver()
@@ -88,7 +99,10 @@ public class QuizManager : MonoBehaviour
             Debug.Log("Out of Questions");
             GameOver();
         }
-
-
     }
+
+    void ChangeScene()
+        {
+            SceneManager.LoadScene(_returnToMenu);
+        }
 }
