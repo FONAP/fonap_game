@@ -95,12 +95,12 @@ namespace SpeedTutorMainMenuSystem
         public void MouseClick(string buttonType)
         {
 
-            if (buttonType == "Graphics")
-            {
-                GeneralSettingsCanvas.SetActive(false);
-                graphicsMenu.SetActive(true);
-                menuNumber = 3;
-            }
+            // if (buttonType == "Graphics")
+            // {
+            //     GeneralSettingsCanvas.SetActive(false);
+            //     graphicsMenu.SetActive(true);
+            //     menuNumber = 3;
+            // }
 
             if (buttonType == "Sound")
             {
@@ -176,14 +176,14 @@ namespace SpeedTutorMainMenuSystem
                 VolumeApply();
             }
 
-            if (GraphicsMenu == "Graphics")
-            {
-                controllerSenText.text = defaultSen.ToString("0");
-                controllerSenSlider.value = defaultSen;
-                controlSenFloat = defaultSen;
+            // if (GraphicsMenu == "Graphics")
+            // {
+            //     controllerSenText.text = defaultSen.ToString("0");
+            //     controllerSenSlider.value = defaultSen;
+            //     controlSenFloat = defaultSen;
 
-                invertYToggle.isOn = false;
-            }
+            //     invertYToggle.isOn = false;
+            // }
         }
         #endregion
 
@@ -191,7 +191,7 @@ namespace SpeedTutorMainMenuSystem
         public void GoBackToOptionsMenu()
         {
             GeneralSettingsCanvas.SetActive(true);
-            graphicsMenu.SetActive(false);
+            // graphicsMenu.SetActive(false);
             soundMenu.SetActive(false);
             
             BrightnessApply();
@@ -205,7 +205,7 @@ namespace SpeedTutorMainMenuSystem
             menuDefaultCanvas.SetActive(true);
             noSaveDialog.SetActive(false);
             GeneralSettingsCanvas.SetActive(false);
-            graphicsMenu.SetActive(false);
+            // graphicsMenu.SetActive(false);
             soundMenu.SetActive(false);
             menuNumber = 1;
         }
