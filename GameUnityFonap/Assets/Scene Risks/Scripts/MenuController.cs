@@ -19,6 +19,7 @@ namespace SpeedTutorMainMenuSystem
         [Header("Levels To Load")]
         public string _newGameButtonLevel;
         private string levelToLoad;
+        public string _loadCredits;
 
         private int menuNumber;
         public GameObject transition;
@@ -125,7 +126,14 @@ namespace SpeedTutorMainMenuSystem
             if (buttonType == "NewGame")
             {
                 transition.SetActive(true);
-                Invoke("ChangeScene", 1f);
+                Invoke("LoadSceneRisks", 1f);
+                menuNumber = 7;
+            }
+
+            if (buttonType == "Credits")
+            {
+                transition.SetActive(true);
+                Invoke("LoadSceneCredits", 1f);
                 menuNumber = 7;
             }
         }
@@ -221,9 +229,14 @@ namespace SpeedTutorMainMenuSystem
         }
         #endregion
 
-        void ChangeScene()
+        void LoadSceneRisks()
         {
             SceneManager.LoadScene(_newGameButtonLevel);
+        }
+
+        void LoadSceneCredits()
+        {
+            SceneManager.LoadScene(_loadCredits);
         }
     }
 }
