@@ -15,9 +15,11 @@ public class LettersManager : MonoBehaviour
     public Text shadowTotalLetters;
     public Text shadowLettersCollected;
 
-    public GameObject canvasMessageSponsor;
+    public GameObject[] canvasMessagesSponsor;
     public bool gameIsPaused = false;
+    bool writting = false;
     bool verifyMessage = true;
+    int index = 0;
 
     public AudioSource clipOpenMagicBook;
     public AudioSource clipCloseMagicBook;
@@ -32,7 +34,11 @@ public class LettersManager : MonoBehaviour
     void Start()
     {
         totalLetterCount = transform.childCount;
-        canvasMessageSponsor.SetActive(false);
+
+        foreach(GameObject canvasMessageSponsor in canvasMessagesSponsor)
+        {
+            canvasMessageSponsor.SetActive(false);
+        }
     }
 
     void Update()
@@ -52,7 +58,7 @@ public class LettersManager : MonoBehaviour
                 case 5:
                     if (verifyMessage)
                     {
-                        canvasMessageSponsor.SetActive(true);
+                        canvasMessagesSponsor[index].SetActive(true);
                         gameIsPaused = true;
                         verifyMessage = false;
                         clipOpenMagicBook.Play();
@@ -63,19 +69,38 @@ public class LettersManager : MonoBehaviour
         else if (gameIsPaused)
         {
             Time.timeScale = 0f;
-            if (Input.GetKeyDown("x"))
+            if (Input.GetKeyDown("x") && index != 1)
             {
-                canvasMessageSponsor.SetActive(false);
-                Time.timeScale = 1f;
-                gameIsPaused = false;
-                clipCloseMagicBook.Play();
-                if (lettersIsComplete && coinsIsComplete)
+                index++;
+                if (index == 3)
                 {
-                    canvasGeneral.SetActive(false);
-                    transition.SetActive(true);
-                    Invoke("ChangeScene", 1.1f);
+                    canvasMessagesSponsor[index-1].SetActive(false);
+                    Time.timeScale = 1f;
+                    gameIsPaused = false;
+                    clipCloseMagicBook.Play();
+                    if (lettersIsComplete && coinsIsComplete)
+                    {
+                        canvasGeneral.SetActive(false);
+                        transition.SetActive(true);
+                        Invoke("ChangeScene", 1.1f);
+                    }
                 }
-            }    
+                else
+                {
+                    clipOpenMagicBook.Play();
+                    canvasMessagesSponsor[index-1].SetActive(false);
+                    canvasMessagesSponsor[index].SetActive(true);
+                    writting = true;
+                }
+                
+            }
+            if (index == 1 && Input.GetMouseButton(0) && !writting)
+            {
+                index++;
+                clipOpenMagicBook.Play();
+                canvasMessagesSponsor[index - 1].SetActive(false);
+                canvasMessagesSponsor[index].SetActive(true);
+            }
         }
     }
 
@@ -91,5 +116,10 @@ public class LettersManager : MonoBehaviour
     void ChangeScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+    }
+
+    public void CanSubmit()
+    {
+        writting = false;
     }
 }
