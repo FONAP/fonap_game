@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Player : MonoBehaviour
     public float speed = 4f;
 
     public AudioSource clipFail;
+
+    private Text outputMessage;
+    private string message;
 
     void Start()
     {
@@ -61,6 +65,10 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Collision_Warning"))
         {
+            outputMessage = messageLandSlide.GetComponent<DinamicMessages>().output;
+            message = messageLandSlide.GetComponent<DinamicMessages>().messages[Random.Range(0, messageLandSlide.GetComponent<DinamicMessages>().messages.Length)];
+            outputMessage.text = message;
+
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             messageLandSlide.SetActive(true);
             clipFail.Play();
@@ -68,6 +76,10 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("Collision_Warning_River"))
         {
+            outputMessage = messageRiver.GetComponent<DinamicMessages>().output;
+            message = messageRiver.GetComponent<DinamicMessages>().messages[Random.Range(0, messageRiver.GetComponent<DinamicMessages>().messages.Length)];
+            outputMessage.text = message;
+
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             messageRiver.SetActive(true);
             clipFail.Play();
@@ -75,6 +87,10 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("Robber"))
         {
+            outputMessage = messageRobber.GetComponent<DinamicMessages>().output;
+            message = messageRobber.GetComponent<DinamicMessages>().messages[Random.Range(0, messageRobber.GetComponent<DinamicMessages>().messages.Length)];
+            outputMessage.text = message;
+
             banRobber.SetActive(true);
             messageRobber.SetActive(true);
             clipFail.Play();
