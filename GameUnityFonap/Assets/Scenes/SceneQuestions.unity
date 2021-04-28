@@ -507,7 +507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &207559272
 AudioSource:
   m_ObjectHideFlags: 0
@@ -952,7 +952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &510533016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1727,7 +1727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &876899449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4314,6 +4314,29 @@ MonoBehaviour:
     - VERDE
     - ROSADO
     CorrectAnswer: 2
+  - Question: "\xBFQue debemos hacer en caso de sospecha de violencia o abuso sexual?"
+    Answers:
+    - "Permanecer calmado y escuchar lo que nos dicen los ni\xF1os/as."
+    - "Llevar al ni\xF1o/a una revisi\xF3n m\xE9dica y denunciar el caso."
+    - Buscar ayuda con mi vecino/a
+    - No preguntar nada.
+    CorrectAnswer: 2
+  - Question: "\xBFCu\xE1l es el n\xFAmero de emergencia en Ecuador? "
+    Answers:
+    - 12345
+    - 911
+    - 111
+    - 123
+    CorrectAnswer: 2
+  - Question: "C\xF3mo sabes estamos en \xE9poca de pandemia, por eso para mantenerte
+      a salvo \xBFqu\xE9 acciones realizar?"
+    Answers:
+    - "Lavarte los dientes tres veces al d\xEDas"
+    - Hacer los deberes primero antes de jugar
+    - Usar mascarilla, lavarte seguido las manos y mantener al menos dos metros de
+      distancia.
+    - Salir con amigos y amigas al parque y visitar a mi familia
+    CorrectAnswer: 3
   options:
   - {fileID: 1802079485}
   - {fileID: 2000963468}

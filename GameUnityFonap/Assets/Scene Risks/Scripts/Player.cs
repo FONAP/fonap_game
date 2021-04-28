@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Audio;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -94,6 +92,11 @@ public class Player : MonoBehaviour
             banRobber.SetActive(true);
             messageRobber.SetActive(true);
             clipFail.Play();
+        }
+        if (collision.CompareTag("QuestionTrigger"))
+        {
+            Destroy(collision.gameObject);
+            SceneManager.LoadScene("SceneQuestions", LoadSceneMode.Additive);
         }
     }
 

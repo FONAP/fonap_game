@@ -67,7 +67,8 @@ public class QuizManager : MonoBehaviour
     IEnumerator waitForNext()
     {
         yield return new WaitForSeconds(1);
-        generateQuestion();
+        SceneManager.UnloadSceneAsync("SceneQuestions");
+        // generateQuestion();
     }
 
     void SetAnswers()
@@ -91,13 +92,65 @@ public class QuizManager : MonoBehaviour
         {
             currentQuestion = Random.Range(0, QnA.Count);
 
+            switch (currentQuestion)
+            {
+                case 0:
+                    if (Questions.doneQuestion0)
+                    {
+                        generateQuestion();
+                        return;
+                    }
+                    Questions.doneQuestion0 = true;
+                    break;
+                case 1:
+                    if (Questions.doneQuestion1)
+                    {
+                        generateQuestion();
+                        return;
+                    }
+                    Questions.doneQuestion1 = true;
+                    break;
+                case 2:
+                    if (Questions.doneQuestion2)
+                    {
+                        generateQuestion();
+                        return;
+                    }
+                    Questions.doneQuestion2 = true;
+                    break;
+                case 3:
+                    if (Questions.doneQuestion3)
+                    {
+                        generateQuestion();
+                        return;
+                    }
+                    Questions.doneQuestion3 = true;
+                    break;
+                case 4:
+                    if (Questions.doneQuestion4)
+                    {
+                        generateQuestion();
+                        return;
+                    }
+                    Questions.doneQuestion4 = true;
+                    break;
+                case 5:
+                    if (Questions.doneQuestion5)
+                    {
+                        generateQuestion();
+                        return;
+                    }
+                    Questions.doneQuestion5 = true;
+                    break;
+            }
+
             QuestionTxt.text = QnA[currentQuestion].Question;
             SetAnswers();
         }
         else
         {
             Debug.Log("Out of Questions");
-            GameOver();
+            // GameOver();
         }
     }
 
