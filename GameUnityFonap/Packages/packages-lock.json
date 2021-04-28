@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.consulo.ide": {
+      "version": "2.2.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://upm.consulo.io"
+    },
     "com.unity.2d.animation": {
       "version": "3.2.5",
       "depth": 0,

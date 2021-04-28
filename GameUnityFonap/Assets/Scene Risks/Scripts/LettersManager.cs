@@ -115,7 +115,7 @@ public class LettersManager : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+2);
     }
 
     public void CanSubmit()

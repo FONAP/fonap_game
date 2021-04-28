@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Robber
   - Collision_Warning_River
+  - QuestionTrigger
   layers:
   - Default
   - TransparentFX
