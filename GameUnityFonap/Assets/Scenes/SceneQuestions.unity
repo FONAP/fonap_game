@@ -585,7 +585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &207559272
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1030,7 +1030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &510533016
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1208,7 +1208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -56.19995, y: 365.20004}
+  m_AnchoredPosition: {x: -56.200012, y: 365.20004}
   m_SizeDelta: {x: -347.30505, y: -903.09406}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541915918
@@ -1639,7 +1639,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &876899449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4625,27 +4625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QnA:
-  - Question: "\xBFDe qu\xE9 color es el caballo blanco de Simon Bolivar?"
-    Answers:
-    - Blanco
-    - Negro
-    - Azul
-    - Rojo
-    CorrectAnswer: 1
-  - Question: "\xBFCapital del Ecuador?"
-    Answers:
-    - Lima
-    - Santiago de Chile
-    - Brasilia
-    - Quito
-    CorrectAnswer: 4
-  - Question: "\xBFColor del cielo?"
-    Answers:
-    - Amarillo
-    - Azul
-    - Verde
-    - Rosado
-    CorrectAnswer: 2
   - Question: "\xBFQu\xE9 debemos hacer en caso de sospechar de violencia o abuso
       sexual?"
     Answers:
@@ -4953,7 +4932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -48.69995, y: 355}
+  m_AnchoredPosition: {x: -48.700012, y: 355}
   m_SizeDelta: {x: -347.30505, y: -903.09406}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954553692

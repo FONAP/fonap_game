@@ -84,11 +84,6 @@ public class Player : MonoBehaviour
             messageRobber.SetActive(true);
             clipFail.Play();
         }
-        if (collision.CompareTag("QuestionTrigger"))
-        {
-            Destroy(collision.gameObject);
-            SceneManager.LoadScene("SceneQuestions", LoadSceneMode.Additive);
-        }
     }
 
     private void OnTriggerExit2D (Collider2D collision)
