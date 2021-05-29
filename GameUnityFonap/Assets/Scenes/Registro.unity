@@ -281,13 +281,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 41982105}
   m_TextComponent: {fileID: 1550120207}
   m_Placeholder: {fileID: 606665727}
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 1
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -588,6 +588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 425608768}
+  - component: {fileID: 425608769}
   m_Layer: 0
   m_Name: registro
   m_TagString: Untagged
@@ -610,6 +611,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &425608769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425608767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103dbd4cf87c471438384908b9f72008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  registerForm: {fileID: 0}
+  inputName: {fileID: 483358630}
+  inputAge: {fileID: 41982104}
+  inputCommunity: {fileID: 1704283657}
+  toggleIsAffiliate: {fileID: 342183748}
 --- !u!1 &432102171
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,13 +862,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 483358631}
   m_TextComponent: {fileID: 432102173}
   m_Placeholder: {fileID: 1480781629}
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 6
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 4
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -2154,7 +2172,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2110820797}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 425608769}
+        m_MethodName: Submit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2110820797
 MonoBehaviour:
   m_ObjectHideFlags: 0
