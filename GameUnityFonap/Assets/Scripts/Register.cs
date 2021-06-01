@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Register : MonoBehaviour
 {
     private string URL = "http://localhost:3000/register";
-
-    public RegisterForm registerForm;
     
     public InputField inputName;
     public InputField inputAge;
@@ -33,7 +32,7 @@ public class Register : MonoBehaviour
         }
         else
         {
-            Debug.Log("Form upload complete!");
+            SceneManager.LoadScene("MainMenu");
         }
     }
 
