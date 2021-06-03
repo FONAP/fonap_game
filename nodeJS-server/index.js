@@ -10,8 +10,8 @@ const CONFIG = require('./config');
 var app = EXPRESS();
 
 // Setting the Express' app
-// app.use(BODYPARSER.json());
 app.use(BODYPARSER.urlencoded());
+
 app.listen(CONFIG.port);
 app.use((request, response, next) => {
     response.header('Access-Control-Allow-Origin', CONFIG.origin);

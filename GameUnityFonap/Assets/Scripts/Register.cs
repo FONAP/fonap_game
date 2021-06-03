@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using SimpleJSON;
 
 public class Register : MonoBehaviour
 {
@@ -23,17 +24,18 @@ public class Register : MonoBehaviour
     {
         WWWForm form = GenerateForm(inputName.text, int.Parse(inputAge.text), inputCommunity.text, toggleIsAffiliate.isOn);
 
-        UnityWebRequest data = UnityWebRequest.Post(URL, form);
-        yield return data.SendWebRequest();
+        UnityWebRequest unityWebRequest = UnityWebRequest.Post(URL, form);
+        yield return unityWebRequest.SendWebRequest();
 
-        if (data.isNetworkError)
+        if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
         {
-            Debug.Log(data.error);
+            Debug.Log(unityWebRequest.error);
+            yield break;
         }
-        else
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
+
+        JSONNode data = JSON.Parse(unityWebRequest.downloadHandler.text);
+        PlayerPrefs.SetInt("user_id", data["data"][0]);
+        SceneManager.LoadScene("MainMenu");
     }
 
     WWWForm GenerateForm(string name, int age, string community, bool is_affiliate)

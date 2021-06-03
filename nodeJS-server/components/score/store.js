@@ -1,13 +1,20 @@
 // Import Knex Module
 const KNEX = require('../../database/database');
 
-function addUser(user) {
-    return KNEX('users').insert(user, 'id')
+function getHighScore() {
+    return KNEX.from('users').orderBy('score', 'desc').limit(10);
+}
+
+function updateScore(id, score) {
+    return KNEX('users')
+        .where('id', id)
+        .andWhere('score', '<', score)
+        .update({score: score}, 'score')
         .then(raw => {
             return JSON.stringify({
                 data: raw,
                 message: {
-                    info: 'Usuario creado con éxito',
+                    info: 'Score actualizado con éxito',
                     status: 200
                 }
             });
@@ -16,7 +23,7 @@ function addUser(user) {
             return JSON.stringify({
                 data: error,
                 message: {
-                    info: 'No se pudo crear el usuario',
+                    info: 'No se pudo actualizar el score',
                     status: 400
                 }
             });
@@ -24,5 +31,6 @@ function addUser(user) {
 }
 
 module.exports = {
-    store: addUser 
+    index: getHighScore,
+    update: updateScore
 }

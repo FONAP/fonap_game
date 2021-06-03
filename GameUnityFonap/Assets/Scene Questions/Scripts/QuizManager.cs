@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
+using SimpleJSON;
 
 public class QuizManager : MonoBehaviour
 {
+    private string URL = "http://localhost:3000/score";
+    private bool inHallFame = false;
+
+    public Text[] nameTexts;
+    public Text[] scoreTexts;
+
     public List<QuestionAndAnswers> QnA;
     public GameObject[] options;
     public int currentQuestion;
 
     public GameObject Quizpanel;
     public GameObject GoPanel;
+    public GameObject HighScoresPanel;
 
     public Text QuestionTxt;
     public Text ScoreTxt;
@@ -30,6 +39,17 @@ public class QuizManager : MonoBehaviour
         generateQuestion();
     }
 
+    private void Update()
+    {
+        if (inHallFame && Input.GetKeyDown("x"))
+        {
+            inHallFame = false;
+            HighScoresPanel.SetActive(false);
+            GoPanel.SetActive(true);
+            ScoreTxt.text = score + "/" + totalQuestions;
+        }
+    }
+
     public void retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -42,11 +62,22 @@ public class QuizManager : MonoBehaviour
         Invoke("ChangeScene", 0.8f);
     }
 
+    public void ShowHighScores()
+    {
+        inHallFame = true;
+        GoPanel.SetActive(false);
+        HighScoresPanel.SetActive(true);
+
+        StartCoroutine(GetHighScores());
+    }
+
     void GameOver()
     {
         Quizpanel.SetActive(false);
         GoPanel.SetActive(true);
         ScoreTxt.text = score + "/" + totalQuestions;
+
+        StartCoroutine(SaveDataInDatabase());
     }
 
     public void correct()
@@ -102,7 +133,48 @@ public class QuizManager : MonoBehaviour
     }
 
     void ChangeScene()
+    {
+        SceneManager.LoadScene(_returnToMenu);
+    }
+
+    IEnumerator SaveDataInDatabase()
+    {
+        int userID = PlayerPrefs.GetInt("user_id");
+
+        WWWForm form = new WWWForm();
+        form.AddField("id", userID);
+        form.AddField("score", score);
+
+        UnityWebRequest unityWebRequest = UnityWebRequest.Post(URL, form);
+
+        yield return unityWebRequest.SendWebRequest();
+
+        if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
         {
-            SceneManager.LoadScene(_returnToMenu);
+            Debug.Log(unityWebRequest.error);
+            yield break;
         }
+    }
+
+    IEnumerator GetHighScores()
+    {
+
+        UnityWebRequest unityWebRequest = UnityWebRequest.Get(URL);
+
+        yield return unityWebRequest.SendWebRequest();
+
+        if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
+        {
+            Debug.Log(unityWebRequest.error);
+            yield break;
+        }
+
+        JSONNode highScores = JSON.Parse(unityWebRequest.downloadHandler.text);
+
+        for (int i = 0; i < highScores.Count; i++)
+        {
+            nameTexts[i].text = i+1 + ". " + highScores[i]["name"];
+            scoreTexts[i].text = highScores[i]["score"];
+        }
+    }
 }
