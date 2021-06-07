@@ -14,10 +14,19 @@ public class Register : MonoBehaviour
     public InputField inputAge;
     public InputField inputCommunity;
     public Toggle toggleIsAffiliate;
+    public Button submitButton;
+    public GameObject messageBox;
 
     public void Submit()
     {
+        submitButton.interactable = false;
         StartCoroutine(SubmitForm());
+    }
+
+    public void CloseModal()
+    {
+        messageBox.SetActive(false);
+        submitButton.interactable = true;
     }
 
     IEnumerator SubmitForm()
@@ -30,12 +39,25 @@ public class Register : MonoBehaviour
         if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
         {
             Debug.Log(unityWebRequest.error);
+            submitButton.interactable = true;
             yield break;
         }
 
         JSONNode data = JSON.Parse(unityWebRequest.downloadHandler.text);
         PlayerPrefs.SetInt("user_id", data["data"][0]);
-        SceneManager.LoadScene("MainMenu");
+
+        if (int.Parse(inputAge.text) > 0 && int.Parse(inputAge.text) <= 8)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else if (int.Parse(inputAge.text) > 8 && int.Parse(inputAge.text) <= 17)
+        {
+            messageBox.SetActive(true);
+        }
+        else if (int.Parse(inputAge.text) > 17)
+        {
+            messageBox.SetActive(true);
+        }
     }
 
     WWWForm GenerateForm(string name, int age, string community, bool is_affiliate)
