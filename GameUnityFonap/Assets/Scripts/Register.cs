@@ -48,15 +48,17 @@ public class Register : MonoBehaviour
 
         if (int.Parse(inputAge.text) > 0 && int.Parse(inputAge.text) <= 8)
         {
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("KidsMenuScene");
         }
         else if (int.Parse(inputAge.text) > 8 && int.Parse(inputAge.text) <= 17)
         {
             messageBox.SetActive(true);
+            // SceneManager.LoadScene("TeensMenuScene");
         }
         else if (int.Parse(inputAge.text) > 17)
         {
             messageBox.SetActive(true);
+            // SceneManager.LoadScene("AdultsMenuScene");
         }
     }
 

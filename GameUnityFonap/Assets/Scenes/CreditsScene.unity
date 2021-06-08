@@ -2163,7 +2163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6c0db5edec544bf9db53595dc7ead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadSceneMenu: MainMenu
+  _loadSceneMenu: KidsMenuScene
   transition: {fileID: 1702363978}
 --- !u!1 &1319976718
 GameObject:

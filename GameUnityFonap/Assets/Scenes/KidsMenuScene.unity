@@ -884,12 +884,17 @@ PrefabInstance:
     - target: {fileID: 114754865640368622, guid: ed022c6eaaa372f498c83d69665e2adc,
         type: 3}
       propertyPath: _loadCredits
-      value: SceneCredits
+      value: CreditsScene
       objectReference: {fileID: 0}
     - target: {fileID: 114754865640368622, guid: ed022c6eaaa372f498c83d69665e2adc,
         type: 3}
       propertyPath: brightnessEffect
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114754865640368622, guid: ed022c6eaaa372f498c83d69665e2adc,
+        type: 3}
+      propertyPath: _newGameButtonLevel
+      value: KidsGameScene
       objectReference: {fileID: 0}
     - target: {fileID: 224557963603241186, guid: ed022c6eaaa372f498c83d69665e2adc,
         type: 3}

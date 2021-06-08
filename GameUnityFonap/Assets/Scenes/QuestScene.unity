@@ -6836,7 +6836,7 @@ MonoBehaviour:
   ScoreTxt: {fileID: 876899450}
   goTransition: {fileID: 1295957233}
   score: 0
-  _returnToMenu: MainMenu
+  _returnToMenu: KidsMenuScene
 --- !u!4 &1821216321
 Transform:
   m_ObjectHideFlags: 0
