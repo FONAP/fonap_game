@@ -124,6 +124,6 @@ public class CoinsManager : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene("QuestScene");
     }
 }

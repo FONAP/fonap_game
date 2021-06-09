@@ -20,7 +20,15 @@ public class Register : MonoBehaviour
     public void Submit()
     {
         submitButton.interactable = false;
-        StartCoroutine(SubmitForm());
+
+        if (inputName.text != "" && inputAge.text != "" && int.Parse(inputAge.text) > 0)
+        {
+            StartCoroutine(SubmitForm());
+        }
+        else
+        {
+            messageBox.SetActive(true);
+        }
     }
 
     public void CloseModal()
@@ -46,19 +54,17 @@ public class Register : MonoBehaviour
         JSONNode data = JSON.Parse(unityWebRequest.downloadHandler.text);
         PlayerPrefs.SetInt("user_id", data["data"][0]);
 
-        if (int.Parse(inputAge.text) > 0 && int.Parse(inputAge.text) <= 8)
+        if (int.Parse(inputAge.text) >= 0 && int.Parse(inputAge.text) <= 12)
         {
             SceneManager.LoadScene("KidsMenuScene");
         }
-        else if (int.Parse(inputAge.text) > 8 && int.Parse(inputAge.text) <= 17)
+        else if (int.Parse(inputAge.text) >= 13 && int.Parse(inputAge.text) <= 24)
         {
-            messageBox.SetActive(true);
-            // SceneManager.LoadScene("TeensMenuScene");
+            SceneManager.LoadScene("TeensMenuScene");
         }
-        else if (int.Parse(inputAge.text) > 17)
+        else if (int.Parse(inputAge.text) >= 25)
         {
-            messageBox.SetActive(true);
-            // SceneManager.LoadScene("AdultsMenuScene");
+            SceneManager.LoadScene("AdultsMenuScene");
         }
     }
 
