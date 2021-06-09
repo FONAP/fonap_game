@@ -17,7 +17,7 @@ public class LettersManager : MonoBehaviour
 
     public GameObject[] canvasMessagesSponsor;
     public bool gameIsPaused = false;
-    bool writting = false;
+
     bool verifyMessage = true;
     int index = 0;
 
@@ -90,16 +90,8 @@ public class LettersManager : MonoBehaviour
                     clipOpenMagicBook.Play();
                     canvasMessagesSponsor[index-1].SetActive(false);
                     canvasMessagesSponsor[index].SetActive(true);
-                    writting = true;
                 }
                 
-            }
-            if (index == 1 && Input.GetMouseButton(0) && !writting)
-            {
-                index++;
-                clipOpenMagicBook.Play();
-                canvasMessagesSponsor[index - 1].SetActive(false);
-                canvasMessagesSponsor[index].SetActive(true);
             }
         }
     }
@@ -118,8 +110,11 @@ public class LettersManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
-    public void CanSubmit()
+    public void SubmitQuestions()
     {
-        writting = false;
+        index++;
+        clipOpenMagicBook.Play();
+        canvasMessagesSponsor[index - 1].SetActive(false);
+        canvasMessagesSponsor[index].SetActive(true);
     }
 }
