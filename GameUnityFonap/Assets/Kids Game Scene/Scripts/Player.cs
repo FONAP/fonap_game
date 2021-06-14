@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     Animator animator;
     Rigidbody2D rigidbody2D;
+    SpriteRenderer spriteRenderer;
+    PlayerSelect playerSelect;
     Vector2 move;
 
     public GameObject banRobber;
@@ -22,6 +24,8 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerSelect = GetComponent<PlayerSelect>();
     }
 
     void Update()
@@ -31,23 +35,47 @@ public class Player : MonoBehaviour
             Input.GetAxisRaw("Vertical")
         );
 
-        /*
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            transform.position + move,
-            speed * Time.deltaTime
-        );
-        */
-
         if (move != Vector2.zero)
         {
-            animator.SetFloat("moveX", move.x);
-            animator.SetFloat("moveY", move.y);
-            animator.SetBool("walking", true);
+            if (move.y > 0)
+            {
+                animator.SetBool("walking_up", true);
+                animator.SetBool("walking_down", false);
+                animator.SetBool("walking_side", false);
+            }
+            else if (move.y < 0)
+            {
+                animator.SetBool("walking_down", true);
+                animator.SetBool("walking_up", false);
+                animator.SetBool("walking_side", false);
+            }
+            else if (move.x > 0)
+            {
+                spriteRenderer.flipX = false;
+                animator.SetBool("walking_side", true);
+                animator.SetBool("walking_up", false);
+                animator.SetBool("walking_down", false);
+            }
+            else if (move.x < 0)
+            {
+                spriteRenderer.flipX = true;
+                animator.SetBool("walking_side", true);
+                animator.SetBool("walking_up", false);
+                animator.SetBool("walking_down", false);
+            }
+            else
+            {
+                spriteRenderer.flipX = false;
+                animator.SetBool("walking_side", false);
+                animator.SetBool("walking_up", false);
+                animator.SetBool("walking_down", false);
+            }
         }
         else
         {
-            animator.SetBool("walking", false);
+            animator.SetBool("walking_down", false);
+            animator.SetBool("walking_up", false);
+            animator.SetBool("walking_side", false);
         }
     }
 
