@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/KidsGameScene.unity
     guid: a5e83a94749b141a6a37c8f9851befc1
   - enabled: 1
+    path: Assets/Scenes/AdultsMenuScene.unity
+    guid: 2f18bca2db2a08240be14cee376c041c
+  - enabled: 1
+    path: Assets/Scenes/AdultsGameScene.unity
+    guid: fd30eb5da928da24291735ca73197758
+  - enabled: 1
     path: Assets/Scenes/QuestScene.unity
     guid: 43ebcb12fc74b4c1891b05f685d0e5db
   - enabled: 1
