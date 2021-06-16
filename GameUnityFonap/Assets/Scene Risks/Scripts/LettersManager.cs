@@ -69,7 +69,7 @@ public class LettersManager : MonoBehaviour
         else if (gameIsPaused)
         {
             Time.timeScale = 0f;
-            if (Input.GetKeyDown("x") && index != 1)
+            if ((Input.GetKeyDown("x") || Input.GetMouseButtonDown(0)) && index != 1)
             {
                 index++;
                 if (index == 3)

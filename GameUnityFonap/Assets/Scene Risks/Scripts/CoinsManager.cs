@@ -94,7 +94,7 @@ public class CoinsManager : MonoBehaviour
         else if (gameIsPaused)
         {
             Time.timeScale = 0f;
-            if (Input.GetKeyDown("x"))
+            if (Input.GetKeyDown("x") || Input.GetMouseButtonDown(0))
             {
                 panelActivities.SetActive(false);
                 Time.timeScale = 1f;

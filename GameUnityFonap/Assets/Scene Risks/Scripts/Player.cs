@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     Animator animator;
     Rigidbody2D rigidbody2D;
     Vector2 move;
+    public float speedMovements = 5f;
+
+    public SimpleTouchController leftController;
 
     public GameObject banRobber;
 
@@ -24,12 +27,27 @@ public class Player : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+
     void Update()
     {
         move = new Vector2(
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical")
         );
+
+
+        // Check if the device running this is a handheld
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            move = new Vector2(
+                    leftController.GetTouchPosition.x,
+                    leftController.GetTouchPosition.y
+            );
+        }
+        else
+        {
+            leftController.gameObject.SetActive(false);
+        }
 
         /*
         transform.position = Vector3.MoveTowards(
