@@ -14,10 +14,27 @@ public class Register : MonoBehaviour
     public InputField inputAge;
     public InputField inputCommunity;
     public Toggle toggleIsAffiliate;
+    public Button submitButton;
+    public GameObject messageBox;
 
     public void Submit()
     {
-        StartCoroutine(SubmitForm());
+        submitButton.interactable = false;
+
+        if (inputName.text != "" && inputAge.text != "" && int.Parse(inputAge.text) > 0)
+        {
+            StartCoroutine(SubmitForm());
+        }
+        else
+        {
+            messageBox.SetActive(true);
+        }
+    }
+
+    public void CloseModal()
+    {
+        messageBox.SetActive(false);
+        submitButton.interactable = true;
     }
 
     IEnumerator SubmitForm()
@@ -30,12 +47,25 @@ public class Register : MonoBehaviour
         if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
         {
             Debug.Log(unityWebRequest.error);
+            submitButton.interactable = true;
             yield break;
         }
 
         JSONNode data = JSON.Parse(unityWebRequest.downloadHandler.text);
         PlayerPrefs.SetInt("user_id", data["data"][0]);
-        SceneManager.LoadScene("MainMenu");
+
+        if (int.Parse(inputAge.text) >= 0 && int.Parse(inputAge.text) <= 12)
+        {
+            SceneManager.LoadScene("KidsMenuScene");
+        }
+        else if (int.Parse(inputAge.text) >= 13 && int.Parse(inputAge.text) <= 24)
+        {
+            SceneManager.LoadScene("TeensMenuScene");
+        }
+        else if (int.Parse(inputAge.text) >= 25)
+        {
+            SceneManager.LoadScene("AdultsMenuScene");
+        }
     }
 
     WWWForm GenerateForm(string name, int age, string community, bool is_affiliate)
