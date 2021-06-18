@@ -7151,9 +7151,9 @@ MonoBehaviour:
   shadowTotalLetters: {fileID: 2458072348165405911}
   shadowLettersCollected: {fileID: 846874291682916351}
   canvasMessagesSponsor:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1230494551}
+  - {fileID: 1144335195}
+  - {fileID: 1902534238}
   gameIsPaused: 0
   clipOpenMagicBook: {fileID: 696610178}
   clipCloseMagicBook: {fileID: 696610177}
