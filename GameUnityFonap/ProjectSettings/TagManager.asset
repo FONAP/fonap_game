@@ -9,6 +9,8 @@ TagManager:
   - Robber
   - Collision_Warning_River
   - QuestionTrigger
+  - DecisionTrigger
+  - Kid
   layers:
   - Default
   - TransparentFX
