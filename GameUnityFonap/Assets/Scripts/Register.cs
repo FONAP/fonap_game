@@ -56,14 +56,17 @@ public class Register : MonoBehaviour
 
         if (int.Parse(inputAge.text) >= 0 && int.Parse(inputAge.text) <= 12)
         {
+            PlayerPrefs.SetString("game_type", "kids");
             SceneManager.LoadScene("KidsMenuScene");
         }
         else if (int.Parse(inputAge.text) >= 13 && int.Parse(inputAge.text) <= 24)
         {
+            PlayerPrefs.SetString("game_type", "teens");
             SceneManager.LoadScene("TeensMenuScene");
         }
         else if (int.Parse(inputAge.text) >= 25)
         {
+            PlayerPrefs.SetString("game_type", "adults");
             SceneManager.LoadScene("AdultsMenuScene");
         }
     }

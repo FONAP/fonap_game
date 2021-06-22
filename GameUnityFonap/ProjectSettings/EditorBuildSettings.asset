@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/AdultsGameScene.unity
     guid: fd30eb5da928da24291735ca73197758
   - enabled: 1
+    path: Assets/Scenes/TeensMenuScene.unity
+    guid: f00fa77682619de4382cec7eef13c1c3
+  - enabled: 1
+    path: Assets/Scenes/TeensGameScene.unity
+    guid: 72cbdf2ee162bfe4b8736f480b925b9b
+  - enabled: 1
     path: Assets/Scenes/QuestScene.unity
     guid: 43ebcb12fc74b4c1891b05f685d0e5db
   - enabled: 1

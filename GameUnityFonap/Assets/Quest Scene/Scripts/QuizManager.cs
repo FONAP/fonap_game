@@ -30,8 +30,6 @@ public class QuizManager : MonoBehaviour
     int totalQuestions = 0;
     public int score;
 
-    public string _returnToMenu;
-
     private void Start()
     {
         totalQuestions = QnA.Count;
@@ -134,7 +132,24 @@ public class QuizManager : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene(_returnToMenu);
+        string gameType = PlayerPrefs.GetString("game_type");
+
+        if (gameType == "kids")
+        {
+            SceneManager.LoadScene("KidsMenuScene");
+        }
+        else if (gameType == "teens")
+        {
+            SceneManager.LoadScene("TeensMenuScene");
+        }
+        else if (gameType == "adults")
+        {
+            SceneManager.LoadScene("AdultsMenuScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("RegisterScene");
+        }
     }
 
     IEnumerator SaveDataInDatabase()
