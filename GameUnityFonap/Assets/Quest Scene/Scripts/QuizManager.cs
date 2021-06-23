@@ -39,7 +39,7 @@ public class QuizManager : MonoBehaviour
 
     private void Update()
     {
-        if (inHallFame && Input.GetKeyDown("x") || Input.GetMouseButtonDown(0))
+        if (inHallFame && (Input.GetKeyDown("x") || Input.GetMouseButtonDown(0)) )
         {
             inHallFame = false;
             HighScoresPanel.SetActive(false);
