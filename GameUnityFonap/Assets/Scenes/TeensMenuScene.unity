@@ -6931,7 +6931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 772d32d3cc3ca21409cca46224f810cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c379afe26e1e08142a5bea61dfa0fc5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8885,7 +8885,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mundo  de  la  proteccion  (TEENS)
+  m_Text: 'Mundo  de  la  proteccion '
 --- !u!1 &4230603065744088907
 GameObject:
   m_ObjectHideFlags: 0

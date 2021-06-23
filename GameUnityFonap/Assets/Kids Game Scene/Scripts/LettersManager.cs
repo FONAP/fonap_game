@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
 public class LettersManager : MonoBehaviour
 {
+    private string URL = "http://localhost:3000/question";
+
     public Text totalLetters;
     public Text lettersCollected;
     private int totalLetterCount;
@@ -30,6 +33,11 @@ public class LettersManager : MonoBehaviour
 
     public GameObject transition;
     public GameObject canvasGeneral;
+
+    public InputField inputQ1;
+    public InputField inputQ2;
+    public InputField inputQ3;
+    public Button submitButton;
 
     void Start()
     {
@@ -110,11 +118,49 @@ public class LettersManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
-    public void SubmitQuestions()
+    public void Submit()
     {
+        submitButton.interactable = false;
+        if (inputQ1.text != "" && inputQ2.text != "" && inputQ3.text != "")
+        {
+            StartCoroutine(SubmitQuestions());
+        }
+        else
+        {
+            submitButton.interactable = true;
+            Debug.Log("No es posible enviar las preguntas!");
+        }
+    }
+    IEnumerator SubmitQuestions()
+    {
+        string[] questions = { inputQ1.text, inputQ2.text, inputQ3.text };
+        WWWForm form = GenerateForm(questions);
+
+        UnityWebRequest unityWebRequest = UnityWebRequest.Post(URL, form);
+        yield return unityWebRequest.SendWebRequest();
+
+        if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
+        {
+            Debug.Log(unityWebRequest.error);
+            submitButton.interactable = true;
+            yield break;
+        }
+
         index++;
         clipOpenMagicBook.Play();
         canvasMessagesSponsor[index - 1].SetActive(false);
         canvasMessagesSponsor[index].SetActive(true);
+    }
+
+    WWWForm GenerateForm(string[] questions)
+    {
+        WWWForm form = new WWWForm();
+
+        form.AddField("id", PlayerPrefs.GetInt("user_id"));
+        form.AddField("q1", questions[0]);
+        form.AddField("q2", questions[1]);
+        form.AddField("q3", questions[2]);
+
+        return form;
     }
 }

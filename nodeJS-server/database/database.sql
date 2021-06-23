@@ -22,3 +22,9 @@ CREATE TABLE users(
 	community TEXT,
 	is_affiliate BOOLEAN,
 	score INTEGER DEFAULT 0);
+
+CREATE TABLE questions(
+	id SERIAL PRIMARY KEY NOT NULL,
+    user_id INTEGER NOT NULL,
+	question TEXT NOT NULL,
+    CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id));
