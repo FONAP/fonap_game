@@ -107,7 +107,7 @@ public class CoinsManager : MonoBehaviour
                     transition.SetActive(true);
                     Invoke("ChangeScene", 1.1f);
                 }
-                
+
             }    
         }
     }
