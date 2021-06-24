@@ -47,6 +47,6 @@ public class AdultManager : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene("QuestScene");
+        SceneManager.LoadScene("AdultsMenuScene");
     }
 }

@@ -1303,7 +1303,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xBFCual es tu comunidad?\n"
+  m_Text: 'Por ejemplo: Otavalo'
 --- !u!222 &962097961
 CanvasRenderer:
   m_ObjectHideFlags: 0

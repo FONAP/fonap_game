@@ -2831,7 +2831,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3730572725574072320, guid: 7d6d3036bf74e9a4190c24913ebec15a,
+  m_Sprite: {fileID: 9131975906648429216, guid: 7d6d3036bf74e9a4190c24913ebec15a,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 1
@@ -4170,6 +4170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527af755ad4684768a57b86b2f20290f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMovements: 5
+  leftController: {fileID: 0}
   banRobber: {fileID: 570163708}
   messageRobber: {fileID: 894366632}
   messageLandSlide: {fileID: 701304904}
@@ -40951,8 +40953,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SubmitQuestions
+      - m_Target: {fileID: 696610176}
+        m_MethodName: Submit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41214,10 +41216,10 @@ MonoBehaviour:
   coinsIsComplete: 0
   transition: {fileID: 1668049986}
   canvasGeneral: {fileID: 981234654}
-  inputQ1: {fileID: 0}
-  inputQ2: {fileID: 0}
-  inputQ3: {fileID: 0}
-  submitButton: {fileID: 0}
+  inputQ1: {fileID: 1191824722}
+  inputQ2: {fileID: 1186171557}
+  inputQ3: {fileID: 1858870147}
+  submitButton: {fileID: 687042657}
 --- !u!82 &696610177
 AudioSource:
   m_ObjectHideFlags: 0
@@ -41895,7 +41897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &730933930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43352,10 +43354,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Bienvenidas y bienvenidos a nuestro mundo de la protecci\xF3n. Junto a
-    Karen y Hugo vamos a aprender y divertirnos. Durante el juego deber\xE1s recolectar
-    todas las monedas y partes del libro. Cada vez que recolectes 5 monedas encontrar\xE1s
-    un mensaje clave \xA1gu\xE1rdalo! Al final los necesitar\xE1s."
+  m_Text: "Bienvenidos y bienvenidas a nuestro Mundo de la protecci\xF3n. Junto a
+    Rosa y Anthony  vamos a aprender y divertirnos. Durante el juego deber\xE1s recolectar
+    todas las monedas y partes del libro que estar\xE1n distribuidas a lo largo del
+    tablero \xA1ten cuidado con la gente extra\xF1a!. Presta atenci\xF3n a los mensajes
+    clave que aparecer\xE1n durante el juego.\r"
 --- !u!222 &909961679
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -44365,6 +44368,7 @@ RectTransform:
   - {fileID: 8192609680489475207}
   - {fileID: 4525965718637784276}
   - {fileID: 3087461972221974683}
+  - {fileID: 1314490223}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47872,7 +47876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1233337693
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49037,6 +49041,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305787935}
   m_CullTransparentMesh: 0
+--- !u!1001 &1314490222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 981234658}
+    m_Modifications:
+    - target: {fileID: 1000010022102532, guid: c3f341c6e5b047e4e8e77a7f098cbbcf, type: 3}
+      propertyPath: m_Name
+      value: SimpleTouch Joystick
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 130
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3f341c6e5b047e4e8e77a7f098cbbcf, type: 3}
+--- !u!224 &1314490223 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224000011143561908, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1314490222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1314490224 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114000010198964430, guid: c3f341c6e5b047e4e8e77a7f098cbbcf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1314490222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cea777969ee18141abd53ba5e64a25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1323311608
 GameObject:
   m_ObjectHideFlags: 0
@@ -80130,6 +80270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527af755ad4684768a57b86b2f20290f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMovements: 5
+  leftController: {fileID: 1314490224}
   banRobber: {fileID: 570163708}
   messageRobber: {fileID: 894366632}
   messageLandSlide: {fileID: 701304904}
@@ -80243,7 +80385,7 @@ Transform:
   m_GameObject: {fileID: 1847677201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.22, y: -3.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.2, z: 1}
   m_Children:
   - {fileID: 1827853313}
   - {fileID: 104899131}
@@ -80278,7 +80420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847677201}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72aa282f24cc94eb9ab4d364a3aedded, type: 3}
   m_Name: 
@@ -81648,11 +81790,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Si t\xFA tambien tiene un patrocinador o patrocinadora, en la pr\xF3xima
-    carta pergunta sobre su pa\xEDs, \xBFcu\xE1l es comida favorita? \xBFc\xF3mo
-    es el clima en su ciudad? \xBFqu\xE9 actividades hacen los ni\xF1os y ni\xF1as
-    en su pa\xEDs para divertirse?\n\nTE INVITAMOS A CONOCER A TU PATROCINADOR O
-    PATROCINADORA PRIMERO"
+  m_Text: "Si t\xFA tambi\xE9n tienes un patrocinador/a, en la pr\xF3xima carta pregunta
+    sobre su pa\xEDs, \xBFcu\xE1l es comida favorita? \xBFc\xF3mo es el clima en
+    su ciudad? \xBFqu\xE9 actividades hacen los ni\xF1os y ni\xF1as en su pa\xEDs
+    para divertirse?\n\nTE INVITAMOS A CONOCER A TU PATROCINADOR O PATROCINADORA
+    PRIMERO"
 --- !u!222 &1918757852
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -88582,7 +88724,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0a0b8625276da8c4fbb83b261f472e0b, type: 3}
-    m_FontSize: 28
+    m_FontSize: 26
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0

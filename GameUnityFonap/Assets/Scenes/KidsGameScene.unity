@@ -15246,6 +15246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 527af755ad4684768a57b86b2f20290f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedMovements: 5
+  leftController: {fileID: 0}
   banRobber: {fileID: 570163708}
   messageRobber: {fileID: 894366632}
   messageLandSlide: {fileID: 701304904}
@@ -40122,11 +40124,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Si t\xFA tambien tiene un patrocinador o patrocinadora, en la pr\xF3xima
-    carta pergunta sobre su pa\xEDs, \xBFcu\xE1l es comida favorita? \xBFc\xF3mo
-    es el clima en su ciudad? \xBFqu\xE9 actividades hacen los ni\xF1os y ni\xF1as
-    en su pa\xEDs para divertirse?\n\nTE INVITAMOS A CONOCER A TU PATROCINADOR O
-    PATROCINADORA PRIMERO"
+  m_Text: "Si t\xFA tambi\xE9n tiene un patrocinador/a, en la pr\xF3xima carta pregunta
+    sobre su pa\xEDs, \xBFcu\xE1l es comida favorita? \xBFc\xF3mo es el clima en
+    su ciudad? \xBFqu\xE9 actividades hacen los ni\xF1os y ni\xF1as en su pa\xEDs
+    para divertirse?\n\nTE INVITAMOS A CONOCER A TU PATROCINADOR O PATROCINADORA
+    PRIMERO"
 --- !u!222 &2025204334
 CanvasRenderer:
   m_ObjectHideFlags: 0
