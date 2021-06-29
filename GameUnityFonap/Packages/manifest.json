@@ -1,5 +1,15 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "consulo.io",
+      "url": "https://upm.consulo.io/",
+      "scopes": [
+        "com.consulo"
+      ]
+    }
+  ],
   "dependencies": {
+    "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master",
     "com.unity.2d.animation": "3.2.5",
     "com.unity.2d.pixel-perfect": "2.0.4",
     "com.unity.2d.psdimporter": "2.1.6",
@@ -43,6 +53,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.consulo.ide": "2.2.0"
   }
 }
